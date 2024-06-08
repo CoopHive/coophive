@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.6;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "./SharedStructs.sol";
 import "./ICoopHiveController.sol";
@@ -9,7 +9,7 @@ import "./ICoopHiveStorage.sol";
 import "./ICoopHivePayments.sol";
 import "./ICoopHiveMediation.sol";
 
-contract CoopHiveController is ICoopHiveController, Ownable, Initializable {
+contract CoopHiveController is ICoopHiveController, OwnableUpgreadable, Initializable {
 
   /**
    * Types
@@ -24,6 +24,15 @@ contract CoopHiveController is ICoopHiveController, Ownable, Initializable {
   ICoopHiveStorage private storageContract;
   ICoopHivePayments private paymentsContract;
   ICoopHiveMediationHandler private mediationContract;
+
+  /**
+     * @notice _disableInitializers in the constructor, 
+     * this prevents initialization of the implementation contract itself, 
+     * as extra protection to prevent an attacker from initializing it.
+     */
+    constructor() {
+        _disableInitializers();
+    }
 
   /**
    * Init

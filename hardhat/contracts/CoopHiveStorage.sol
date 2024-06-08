@@ -32,6 +32,15 @@ contract CoopHiveStorage is ControllerOwnable, Initializable {
     string dealId,
     SharedStructs.AgreementState state
   );
+  
+  /**
+     * @notice _disableInitializers in the constructor, 
+     * this prevents initialization of the implementation contract itself, 
+     * as extra protection to prevent an attacker from initializing it.
+     */
+    constructor() {
+        _disableInitializers();
+    }
 
   /**
    * Init

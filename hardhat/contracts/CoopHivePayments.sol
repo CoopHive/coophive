@@ -78,6 +78,15 @@ contract CoopHivePayments is ControllerOwnable, Initializable {
    * Init
    */
 
+  /**
+     * @notice _disableInitializers in the constructor, 
+     * this prevents initialization of the implementation contract itself, 
+     * as extra protection to prevent an attacker from initializing it.
+     */
+    constructor() {
+        _disableInitializers();
+    }
+
   // used for debugging
   mapping(address => string) private accountNames;
 

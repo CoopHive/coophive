@@ -24,6 +24,15 @@ contract ExampleClient is Ownable, Initializable, ICoopHiveJobClient {
     string dataId
   );
 
+  /**
+     * @notice _disableInitializers in the constructor, 
+     * this prevents initialization of the implementation contract itself, 
+     * as extra protection to prevent an attacker from initializing it.
+     */
+    constructor() {
+        _disableInitializers();
+    }
+
   function initialize(address _jobManagerAddress) public initializer {
     setJobManagerAddress(_jobManagerAddress);
   }

@@ -14,6 +14,15 @@ contract CoopHiveUsers is Ownable, Initializable {
   mapping(SharedStructs.ServiceType => address[]) private usersByType;
 
   /**
+     * @notice _disableInitializers in the constructor, 
+     * this prevents initialization of the implementation contract itself, 
+     * as extra protection to prevent an attacker from initializing it.
+     */
+    constructor() {
+        _disableInitializers();
+    }
+    
+  /**
    * Init
    */
 
