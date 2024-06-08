@@ -178,7 +178,7 @@ func (controller *ResourceProviderController) Start(ctx context.Context, cm *sys
 */
 
 func (controller *ResourceProviderController) solve() error {
-	controller.log.Debug("solving", "")
+	controller.log.Trace("solving", "")
 
 	// if the solver does not know about resource offers
 	// that we have - we should post them to the solver

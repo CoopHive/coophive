@@ -20,3 +20,6 @@ node_modules
 *.sw*
 frontend/lib
 dist
+coophive
+bacalhau-darwin-arm64
+eth-faucet
